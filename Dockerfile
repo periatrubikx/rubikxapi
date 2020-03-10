@@ -1,4 +1,12 @@
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=build/libs/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+RUN mkdir /opt/rubikxapi
+ADD . / /opt/rubikxapi/
+
+WORKDIR /opt/rubikxapi
+
+RUN ./gradlew build
+
+RUN cp build/libs/*.jar /opt/app.jar
+
+ENTRYPOINT ["java","-jar","/opt/app.jar"]
