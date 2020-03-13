@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class GenericController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping(path = "/", consumes = "application/json", produces = "application/json")
-    public void handleSamplePost(@RequestBody Object samplePayload) {
+    @PostMapping(path = "/")
+    public String handleSamplePost(@RequestBody String samplePayload) {
         logger.info(samplePayload.toString());
+        return "{\"message\" : \"Success\"}";
     }
 }
