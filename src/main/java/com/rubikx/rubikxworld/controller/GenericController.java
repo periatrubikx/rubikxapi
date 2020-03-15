@@ -21,7 +21,7 @@ public class GenericController {
 
     @GetMapping(path = "/")
     public ResponseEntity<String> handleSampleGet(HttpServletRequest request) {
-        logIncomingRequest(request.getMethod(), request.getRequestURL().toString(), request.getQueryString().toString());
+        logIncomingRequest(request.getMethod(), request.getRequestURL().toString(), request.getQueryString());
         return ResponseEntity.ok("{\"message\" : \"Success\"}");
     }
 
