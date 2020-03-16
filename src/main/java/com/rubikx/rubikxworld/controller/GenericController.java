@@ -3,6 +3,7 @@ package com.rubikx.rubikxworld.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriUtils;
 
@@ -27,6 +28,9 @@ public class GenericController {
     }
 
     private void logIncomingRequest(String methodType, String uri, String data) {
-        logger.info("Incoming request : Method : {} -> URI {} -> Data : {}", methodType, uri, UriUtils.decode(data, "UTF-8"));
+        if(!StringUtils.isEmpty(data)) {
+            data = UriUtils.decode(data, "UTF-8");
+        }
+        logger.info("Incoming request : Method : {} -> URI {} -> Data : {}", methodType, uri, data);
     }
 }
