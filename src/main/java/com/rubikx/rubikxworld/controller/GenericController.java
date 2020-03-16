@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,6 +27,6 @@ public class GenericController {
     }
 
     private void logIncomingRequest(String methodType, String uri, String data) {
-        logger.info("Incoming request : Method : {} -> URI {} -> Data : {}", methodType, uri, data);
+        logger.info("Incoming request : Method : {} -> URI {} -> Data : {}", methodType, uri, UriUtils.decode(data, "UTF-8"));
     }
 }
